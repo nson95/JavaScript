@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function playGame() {
+            // var framesCtrl = getRefById("frames");
+            // var sumCtrl = getRefById("sum");
+            // var avgCtrl = getRefById("avg");
+            var scores = []
+            var sum = 0;
+            for (idx = 0; idx < 10; idx++) {
+                let score = getRandomNumber()
+                scores.push(score);
+                sum += score;
+
+            }
+
+            let avg = sum / scores.length;
+            console.log(scores, sum, avg)
+
+            // framesCtrl.textContent = scores.join();
+            $("#frames").text(scores.join())
+            // sumCtrl.value = sum;
+            $("#sum").val(sum);
+            // avgCtrl.value = avg;
+            $("#avg").val(avg);
+
+        }
+        function getRefById(id) {
+            return document.getElementById(id)
+        }
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 11);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Bowling Demo</h1>
+
+    <h2>Frames</h2>
+    <p id="frames">
+        frames array goes here
+    </p>
+    <p>
+        <label for="sum">Sum: </label>
+        <input type="text" id="sum" name="sum" readonly>
+    </p>
+    <p>
+        <label for="avg">Avg: </label>
+        <input type="text" id="avg" name="avg" readonly>
+    </p>
+    <button onclick="playGame()" id="play" name="play" class="btn btn-primary">Bowl</button>
+</body>
+
+</html>
